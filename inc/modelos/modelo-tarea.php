@@ -54,8 +54,6 @@
             'error' => $e->getMessage()
         );
     }
-
-    
-
+    // Insertar tarea
     die(json_encode($resultado));
 ?>
