@@ -10,7 +10,7 @@
 
 <div class="resultados contenedor">
     <?php
-        $stmt = $conn->prepare("SELECT * FROM actividades WHERE seccion = ? ORDER BY id ");
+        $stmt = $conn->prepare("SELECT * FROM actividades WHERE seccion = ? ORDER BY id DESC");
         $stmt->bind_param("i", $seccion);
         $stmt->execute();
         $actividades=$stmt->get_result();
@@ -32,16 +32,13 @@
                 $stmt->fetch();
                 $stmt->close();
             ?>
-            <pre>
-                <?php var_dump($result); ?>
-            </pre>
 
             <div class="cont-actividad" id="<?php echo $result['titulo']; ?>">
+                <h2><?php echo $result['titulo']; ?> </h2>
                 <div class="header-actividad">
                     <p><?php echo $materia; ?> </p>
                     <p><?php echo $profesor; ?> </p>
                 </div>
-                <h2><?php echo $result['titulo']; ?> </h2>
                 <p><?php echo $result['descripcion']; ?> </p>
             </div>
         <?php } 

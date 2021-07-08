@@ -1,3 +1,9 @@
+:root {
+    --primario: rgb(199, 36, 36);
+    --secundario: rgb(199, 123, 36);
+    --secundario-claro: rgb(224, 170, 71);
+  }
+
 html {
     box-sizing: border-box;
     height: 100%;
@@ -9,75 +15,21 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-family: 'Roboto', sans-serif;
 }
+h2 {
+    text-align: center;
+}
 .contenedor {
     width: 80%;
     margin: 0 auto;
 }
-/*ENTRADAS*/
-.vacio {
-    margin-top: 4rem;
-    font-size: 1.5rem;
-    color: rgb(102, 102, 102);
+.text-gradient {
+    background: var(--primario);
+    background: linear-gradient(90deg, var(--primario) 36%, var(--secundario) 65%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-ul#datos {
-    padding: 0;
-}
-li {
-    list-style: none;
-    padding: 0 2rem;
-    background-color: #bdbdbd;
-    margin: 1.5rem 0;
-    padding: 2rem;
-    border-radius: 5px;
-    position: relative;
-}
-.opciones {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
-}
-.delete, .edit {
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-.delete {
-    color: rgba(122, 18, 49, 0.7);
-    margin-right: .5rem;
-    transition: .3s;
-}
-.delete:hover {
-    color: rgb(122, 18, 49);
-    font-size: 1.7rem;
-}
-.edit {
-    color: rgba(196, 145, 7, 0.7);
-    transition: .3s;
-}
-.edit:hover {
-    color: rgba(196, 145, 7, 1);
-    font-size: 1.7rem;
-}
-h1 {
-    text-align: center;
-    font-family: 'Lobster', cursive;
-}
-.fecha {
-    color: #5c5c5c;
-    font-style: italic;
-}
-.titulo {
-    color: #0547b1;
-}
-.texto {
-    color: #222222;
-    font-size: 1.1rem;
-}
-@media only screen and (max-width: 500px) {
-    .opciones {
-        position:static;
-        margin-bottom: 1rem;
-    }    
-}
+
 /*HEADER*/
 .header {
     display: flex;
@@ -93,7 +45,7 @@ header h1 {
     margin-right: 5px;
     padding: 1rem;
     border: none;
-    background: #1c42a3;
+    background: var(--primario);
     border-radius: 10px;
     color: rgb(255, 255, 255, .7);
     cursor: pointer;
@@ -101,11 +53,8 @@ header h1 {
     text-decoration: none;
 }
 .botones button:hover, .botones a:hover {
-    background: rgb(53, 129, 227);
+    background: var(--secundario);
     color: #fff;
-}
-.disabled {
-    display: none!important;
 }
 @media (max-width: 750px) {
     header {
@@ -124,100 +73,8 @@ header h1 {
         margin-bottom: 1rem;
     }
 }
-/*PAGINACION*/
-#paginacion {
-    padding-bottom: 3rem;
-}
-#paginacion .boton {
-    border: none;
-    background: rgb(53, 129, 227);
-    margin: 2px;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 5px;
-    transition: all .3s ease;
-    color: #fff;
-    font-size: 1.1rem;
-}
-#paginacion .boton:focus {
-    outline: none;
-}
-#paginacion .boton:hover {
-    background: rgba(53, 129, 227, .7);
-    cursor: pointer;
-    transform: scale(1.1);
-}
-#paginacion .boton.actual {
-    background: rgb(28, 66, 163);
-}
 
-/*Formulario*/
-#formulario {
-    display: flex;
-    flex-direction: column;
-    background-color: #272657;
-    border-radius: 10px;
-}
-.seccion-superior {
-    display: flex;
-    width: 90%;
-    margin: 0 auto;
-}
-#title {
-    font-size: 1.2rem;
-}
-#title, #date, #text {
-    background: border-box;
-    border: none;
-    color: #fff;
-    padding: 1.5rem;
-}
-#title, #date, #text:focus {
-    outline: none;
-}
-#text {
-    resize: none;
-    width: 90%;
-}
-#text::-webkit-scrollbar {
-    display: none;  
-}
-
-input[type="submit"] {
-    background: #3a4ea7;
-    color: rgba(255, 255, 255, .7);
-    height: 3rem;
-    border: none;
-    transition: .5s;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-input[type="submit"]:focus {
-    outline: none;
-}
-input[type="submit"]:hover {
-    background: #2a42b3;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-@media (max-width: 600px) {
-    .seccion-superior {
-        display: unset;
-        text-align: center;
-    }
-    #title {
-        width: 90%;
-        text-align: center;
-    }
-}
 /** LOGIN **/
-.login,
-.crear-cuenta {
-    background: #c84e4e;
-}
 .contenedor-formulario {
     display: flex;
     justify-content: center;
@@ -227,7 +84,7 @@ input[type="submit"]:hover {
 }
 .contenedor-formulario h1 {
     text-align: center;
-    color: #2a42b3;
+    color: var(--primario);
 }
 .contenedor-formulario h1  span{
     font-weight: 400;
@@ -235,20 +92,23 @@ input[type="submit"]:hover {
     font-family: 'Roboto', sans-serif;
 }
 .caja-login {
-    background-color: #F2F2F2;
-    border: 1px solid #707070;
-    max-width: 650px;
-    width: 90%;
+    background-color: var(--secundario-claro);
+    border-radius: 10px;
+    width: 350px;
+    height: 450px;
     margin: 0 auto;
     min-height: 300px;
     -webkit-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
     -moz-box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
     box-shadow: 0px 25px 35px -17px rgba(0,0,0,0.56);
     padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .campo {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     align-items: center;
 }
 .campo-enviar {
@@ -256,37 +116,36 @@ input[type="submit"]:hover {
     flex-direction: column;
     margin-top: 2rem;
 }
-.campo label {
-    flex: 0 0 100px;
-    text-align: right;
-    padding-right: 1rem;
-}
 .campo input[type="text"],
-.campo input[type="password"] {
-    height: 3rem;
+.campo input[type="password"],
+.campo input[type="email"],
+.campo input[type="number"],
+.campo input[type="phone"],
+.campo select    {
+    height: 2.5rem;
     border: 0;
     flex: 1;
-    border: 1px solid #455A64;
-    border-radius: 5rem;
-    padding-left: 2rem;
+    border-left: 10px solid var(--primario);
+    padding-left: 1rem;
     overflow: hidden;
     transition: all .3s ease;
 }
 .campo input[type="text"]:focus,
-.campo input[type="password"]:focus {
+.campo input[type="password"]:focus,
+.campo input[type="email"]:focus,
+.campo input[type="number"]:focus,
+.campo input[type="phone"]:focus,
+.campo select {
     outline: none;
     background: #e2e0cb;
 }
 @media only screen and (max-width: 500px) {
-    .campo label {
-        display: none;
-    }
     .boton-formulario {
         flex: 1;
     }
 }
 .enviar {
-   justify-content: flex-end;
+   justify-content: space-between;
 }
 .boton-formulario {
     background-color: #FDD835;
@@ -295,10 +154,10 @@ input[type="submit"]:hover {
     display: block;
     padding: 1rem;
     text-transform: uppercase;
-    font-weight: 400;
     border: none;
     font-weight: 900;
     overflow: hidden;
+    font-size: .8rem;
 }
 .boton-formulario:hover {
     cursor: pointer;
@@ -313,6 +172,59 @@ input[type="submit"]:hover {
     transform: scale(1.1);
     color: #FDD835;
 }
+
+/* FORMULARIO ACTIVIDADES */
+#form-actividad {
+    background: #c5c5c5;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    align-items: center;
+    margin: 4rem auto;
+}
+.campo-actividad {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#form-actividad input[type="text"],
+#form-actividad textarea,
+#form-actividad .selects select {
+    width: 80%;
+    border: none;
+    padding: .5rem;
+    margin-bottom: .5rem;
+}
+#form-actividad input[type="text"]:focus,
+#form-actividad textarea:focus,
+#form-actividad .selects select {
+    outline: none;
+    background: #e2e0cb;
+}
+.selects {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+/* LISTA DE ACTIVIDADES */
+
+.cont-actividad {
+    width: 80%;
+    background: var(--secundario-claro);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 0 auto 4rem auto;
+}
+.header-actividad {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
 /*FOOTER*/
 footer {
     display: flex;
@@ -322,25 +234,7 @@ footer {
     height: 6rem;
     font-size: 1.1rem;
 }
-footer .social a:hover {
-    font-size: 2.5rem;
-}
-.social a {
-    font-size: 2rem;
-    text-decoration: none;
-    margin-right: 1rem;
-    transition: .3s;
-}
-.social a:last-of-type {
-    margin-right: 0;
-}
-.text-gradient {
-    background: rgb(55,123,231);
-    background: linear-gradient(90deg, rgba(55,123,231,1) 36%, rgba(15,4,61,1) 65%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+
 @media only screen and (max-width: 500px) {
     footer {
         flex-direction: column;
