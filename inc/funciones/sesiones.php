@@ -2,8 +2,15 @@
 
 function usuario_autenticado() {
     if(!revisar_usuario()) {
-        header('Location:login.php');
-        exit();
+        if(obtenerPaginaActual()=='index') {
+            header('Location:login.php');
+            exit();
+        }
+    } else {
+        if(obtenerPaginaActual()=='login' || obtenerPaginaActual()=='crear-cuenta') {
+            header('Location:index.php');
+            exit();
+        }
     }
 }
 

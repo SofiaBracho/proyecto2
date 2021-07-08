@@ -1,9 +1,6 @@
 <?php
-    session_start();
     include 'inc/templates/header.php';
-    include 'inc/funciones/pagina.php';
 
-    
     if(isset($_SESSION['id'])) {
         header('Location:index.php');
         
@@ -14,24 +11,21 @@
     }
 ?>
     <div class="contenedor-formulario">
-        <h1 class="text-gradient">Mini Diary</h1>
+        <h1>Gestor de actividades</h1>
         <form id="formulario" class="caja-login" method="post">
-            <div class="campo">
-                <label for="cedula">C.I: </label>
-                <input type="number" name="cedula" id="cedula" placeholder="Tu cédula">
-            </div>
-            <div class="campo">
-                <label for="password">Password: </label>
-                <input type="password" name="password" id="password" placeholder="Password">
+            <div class="campos">
+                <div class="campo">
+                    <input type="number" name="cedula" id="cedula" placeholder="Tu cédula">
+                </div>
+                <div class="campo">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
             </div>
             <div class="campo enviar">
                 <input type="hidden" id="tipo" value="login">
                 <input type="hidden" id="tipo-usuario">
+                <a href="crear-cuenta.php">Regístrate</a>
                 <input type="submit" class="boton-formulario" value="Iniciar Sesión">
-            </div>
-
-            <div class="campo">
-                <a href="crear-cuenta.php">Crea una cuenta nueva</a>
             </div>
         </form>
     </div>

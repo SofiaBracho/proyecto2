@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    include 'inc/funciones/pagina.php';
+    include 'inc/funciones/sesiones.php';
+    usuario_autenticado(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

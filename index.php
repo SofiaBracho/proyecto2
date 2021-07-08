@@ -1,9 +1,5 @@
 <?php
     include 'inc/templates/header.php';
-    include 'inc/funciones/sesiones.php';
-    include 'inc/funciones/pagina.php';
-    session_start();
-    usuario_autenticado();
 ?>
     <header class="contenedor header">
         <h1 class="text-gradient">Sistema educativo</h1>
