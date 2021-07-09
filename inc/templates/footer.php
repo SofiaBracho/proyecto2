@@ -9,7 +9,6 @@
 
     //INDEX
     if(obtenerPaginaActual() == "index") {
-        echo '<script src="js/scripts.js"></script>';
         if($_SESSION['tipo_usuario']=='profesor') {
             echo '<script src="js/actividad.js"></script>';
         }

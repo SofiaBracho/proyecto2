@@ -51,11 +51,15 @@
         </select>
     </div>
 
+    <input type="hidden" name="accion" id="accion" value="crear">
+    <input type="hidden" name="id" id="id">
     <input type="hidden" name="profesor" value="<?php echo $_SESSION['id']; ?>">
     <input type="hidden" name="correo_profesor" value="<?php echo $_SESSION['correo']; ?>">
     <input type="submit" class="boton-formulario" value="Enviar actividad">
 </form>
 
+
+<!-- ACTIVIDADES -->
 <div class="resultados contenedor">
     <?php
         $profesor=$_SESSION['id'];
@@ -76,6 +80,10 @@
             ?>
 
             <div class="cont-actividad" id="<?php echo $result['id']; ?>">
+                <div class="botones-actividad">
+                    <a class="edit"> <i class="fas fa-pencil-alt"></i> </a>
+                    <a class="delete"> <i class="fas fa-trash"></i> </a>
+                </div>
                 <h2><?php echo $result['titulo']; ?> </h2>
                 <div class="header-actividad">
                     <p> <b>Materia:</b> <?php echo $materia; ?> </p>

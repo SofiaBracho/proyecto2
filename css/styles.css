@@ -214,7 +214,7 @@ header h1 {
 
 .cont-actividad {
     width: 80%;
-    background: var(--secundario-claro);
+    background: rgb(182, 182, 182);
     padding: 2rem;
     border-radius: 10px;
     margin: 0 auto 4rem auto;
@@ -223,6 +223,25 @@ header h1 {
     display: flex;
     justify-content: space-between;
     margin-bottom: 3rem;
+}
+.botones-actividad {
+    display: flex;
+    justify-content: flex-end;
+}
+.botones-actividad a {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    transition: .3s;
+}
+.botones-actividad a:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.botones-actividad a.edit {
+    color:rgb(221, 191, 57);
+}
+.botones-actividad a.delete {
+    color: rgb(216, 45, 45);
 }
 
 /*FOOTER*/
