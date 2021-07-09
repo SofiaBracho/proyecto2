@@ -1,14 +1,5 @@
 <?php
     include 'inc/templates/header.php';
-
-    if(isset($_SESSION['id'])) {
-        header('Location:index.php');
-        
-        if(isset($_GET['cerrar_sesion']) ) {
-            $_SESSION = array();
-        }
-        exit();
-    }
 ?>
     <div class="contenedor-formulario">
         <h1>Gestor de actividades</h1>

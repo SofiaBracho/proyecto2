@@ -1,5 +1,14 @@
 <?php 
     session_start();
+    if(isset($_GET['cerrar_sesion']) ) {
+        $_SESSION = array();
+        
+        if(isset($_SESSION['id'])) {
+            header('Location:index.php');
+            
+            exit();
+        }
+    }
     include 'inc/funciones/pagina.php';
     include 'inc/funciones/sesiones.php';
     usuario_autenticado(); 
