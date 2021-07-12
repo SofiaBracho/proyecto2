@@ -27,6 +27,7 @@
                 $stmt->bind_param('i', $seccion);
                 $stmt->execute();
                 $rows = $stmt->get_result();
+                $stmt->close();
 
                 $correos = array();
                 while ( $correo = $rows->fetch_assoc() ) {
@@ -43,17 +44,67 @@
 
                 $mail = mail($to, $subject, $message, $headers);
 
+                // Si se envía el correo
                 if( $mail ) {
-                    $resultado = array(
-                        "respuesta" => "correcto",
-                        "mail" => "enviado"
-                    );
+                    // Enviar SMS
+                    // Extraigo los telefonos de la sección
+                    $stmt = $conn->prepare("SELECT telefono FROM estudiantes WHERE seccion = ? ");
+                    $stmt->bind_param('i', $seccion);
+                    $stmt->execute();
+                    $rows = $stmt->get_result();
+                    $stmt->close();
+    
+                    // Creo un array con los telefonos
+                    $telefonos = array();
+                    while ( $telefono = $rows->fetch_assoc() ) {
+                        $telefonos[] = $telefono['telefono'];
+                    }
+
+                    // Obteniendo nombre del profesor
+                    $stmt = $conn->prepare("SELECT nombre_profesor FROM profesores WHERE id = ? ");
+                    $stmt->bind_param('i', $profesor);
+                    $stmt->execute();
+                    $stmt->bind_result($nombre_profesor);
+                    $stmt->fetch();
+                    $stmt->close();
+                    
+                    // Obteniendo materia
+                    $stmt = $conn->prepare("SELECT nombre FROM materias WHERE id = ? ");
+                    $stmt->bind_param('i', $materia);
+                    $stmt->execute();
+                    $stmt->bind_result($nombre_materia);
+                    $stmt->fetch();
+                    $stmt->close();
+                        
+                    $mensaje = $titulo;
+                    $mensaje .= "\n" . $descripcion;
+                    $mensaje .= "\nProfesor: " . $nombre_profesor;
+                    $mensaje .= "\nMateria: ". $nombre_materia;
+
+    
+                    include '../funciones/testAltiriaSms.php';
+                    // Si se envía el SMS
+                    if($response) {
+                        $resultado = array(
+                            "respuesta" => "correcto",
+                            "mail" => "enviado",
+                            "mensaje" => "enviado"
+                        );
+                    }else {
+                        $resultado = array(
+                            "respuesta" => "correcto",
+                            "mail" => "enviado",
+                            "mensaje" => "fallido"
+                        );
+                    }
                 } else {
                     $resultado = array(
                         "respuesta" => "correcto",
-                        "mail" => "fallido"
+                        "mail" => "fallido",
+                        "mensaje" => "fallido"
                     );
                 }
+
             }
         } catch (Exception $e) {
             // Tomar la excepcion
@@ -74,6 +125,7 @@
                 $stmt->bind_param('i', $seccion);
                 $stmt->execute();
                 $rows = $stmt->get_result();
+                $stmt->close();
 
                 $correos = array();
                 while ( $correo = $rows->fetch_assoc() ) {
@@ -90,15 +142,64 @@
 
                 $mail = mail($to, $subject, $message, $headers);
 
+                // Si se envía el correo
                 if( $mail ) {
-                    $resultado = array(
-                        "respuesta" => "correcto",
-                        "mail" => "enviado"
-                    );
+                    // Enviar SMS
+                    // Extraigo los telefonos de la sección
+                    $stmt = $conn->prepare("SELECT telefono FROM estudiantes WHERE seccion = ? ");
+                    $stmt->bind_param('i', $seccion);
+                    $stmt->execute();
+                    $rows = $stmt->get_result();
+                    $stmt->close();
+    
+                    // Creo un array con los telefonos
+                    $telefonos = array();
+                    while ( $telefono = $rows->fetch_assoc() ) {
+                        $telefonos[] = $telefono['telefono'];
+                    }
+
+                    // Obteniendo nombre del profesor
+                    $stmt = $conn->prepare("SELECT nombre_profesor FROM profesores WHERE id = ? ");
+                    $stmt->bind_param('i', $profesor);
+                    $stmt->execute();
+                    $stmt->bind_result($nombre_profesor);
+                    $stmt->fetch();
+                    $stmt->close();
+                    
+                    // Obteniendo materia
+                    $stmt = $conn->prepare("SELECT nombre FROM materias WHERE id = ? ");
+                    $stmt->bind_param('i', $materia);
+                    $stmt->execute();
+                    $stmt->bind_result($nombre_materia);
+                    $stmt->fetch();
+                    $stmt->close();
+                        
+                    $mensaje = $titulo;
+                    $mensaje .= "\n" . $descripcion;
+                    $mensaje .= "\nProfesor: " . $nombre_profesor;
+                    $mensaje .= "\nMateria: ". $nombre_materia;
+
+    
+                    include '../funciones/testAltiriaSms.php';
+                    // Si se envía el SMS
+                    if($response) {
+                        $resultado = array(
+                            "respuesta" => "correcto",
+                            "mail" => "enviado",
+                            "mensaje" => "enviado"
+                        );
+                    }else {
+                        $resultado = array(
+                            "respuesta" => "correcto",
+                            "mail" => "enviado",
+                            "mensaje" => "fallido"
+                        );
+                    }
                 } else {
                     $resultado = array(
                         "respuesta" => "correcto",
-                        "mail" => "fallido"
+                        "mail" => "fallido",
+                        "mensaje" => "fallido"
                     );
                 }
             }
