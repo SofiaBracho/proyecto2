@@ -4,6 +4,7 @@
     <header class="contenedor header">
         <h1 class="text-gradient">Sistema educativo</h1>
         <div class="botones">
+            <a href="seccion.php" id="boton-seccion"> <?php echo ($_SESSION['tipo_usuario']=='estudiante') ? 'Mi seccion' : 'Mis secciones' ; ?> </a>
             <a href="login.php?cerrar_sesion=true" id="boton-logout"> Cerrar Sesión </a>
         </div>
     </header>
