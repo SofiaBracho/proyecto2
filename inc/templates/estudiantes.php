@@ -3,11 +3,6 @@
     $seccion = $_SESSION['seccion']
 ?>
 
-<pre>
-    <?php var_dump($_SESSION); ?>
-
-</pre>
-
 <div class="resultados contenedor">
     <?php
         $stmt = $conn->prepare("SELECT * FROM actividades WHERE seccion = ? ORDER BY id DESC");

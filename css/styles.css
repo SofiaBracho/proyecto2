@@ -34,6 +34,7 @@ h2 {
 .header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 4rem;
 }
 header h1 {
     display: inline-block;
@@ -259,4 +260,27 @@ footer {
         flex-direction: column;
         height: 10rem;
     }
+}
+
+/* SECCIONES */
+#contenedor-secciones h2 {
+    background: var(--primario);
+    padding: .7rem;
+    border-bottom: 10px solid #910a0a;
+}
+#contenedor-secciones {
+    background: #cacaca;
+    padding-bottom: 3rem;
+}
+table {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+}
+th, td {
+    padding: .5rem;
+}
+th {
+    background: var(--secundario);
 }

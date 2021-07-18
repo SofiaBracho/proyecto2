@@ -3,13 +3,14 @@
     include 'inc/funciones/db.php';
 ?>
     <header class="contenedor header">
-        <h1 class="text-gradient">Sistema educativo</h1>
+        <a href="index.php"> <h1 class="text-gradient">Sistema educativo</h1> </a>
         <div class="botones">
             <a href="seccion.php" id="boton-seccion"> <?php echo ($_SESSION['tipo_usuario']=='estudiante') ? 'Mi seccion' : 'Mis secciones' ; ?> </a>
             <a href="login.php?cerrar_sesion=true" id="boton-logout"> Cerrar Sesión </a>
         </div>
     </header>
 
+    <div id="contenedor-secciones">
     <?php if($_SESSION['tipo_usuario']=='estudiante') {
         $stmt = $conn->prepare("SELECT seccion FROM estudiantes WHERE id = ? ");
         $stmt->bind_param("i", $_SESSION['id']);
@@ -154,7 +155,10 @@
             </tbody>
         </table>
 <?php        }
-    }
+    } ?>
 
+</div>
+
+<?php
     include_once "inc/templates/footer.php";
 ?>
